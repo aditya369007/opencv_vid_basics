@@ -7,15 +7,17 @@ using namespace std;
 
 int main(int argc, char* argv[])
 {
-    VideoCapture cap("E:\\photos\\OnePlus3\\VID_20170420_095545.mp4");
+    VideoCapture cap(0);
     if(!cap.isOpened())
     {
         cout<< "Check the input file you idiot" << endl;
         return -1;
     }
 
-    double fps = cap.get(CV_CAP_PROP_FPS);
-    cout<<"The FPS of the vid is" << fps << endl;
+    double dWidth = cap.get(CV_CAP_PROP_FRAME_WIDTH);
+    double dHeight = cap.get(CV_CAP_PROP_FRAME_HEIGHT);
+
+    cout << "Frame Size "<< dWidth << "by" << dHeight<< endl;
     namedWindow("OP3 ",CV_WINDOW_AUTOSIZE);
 
     while(1)
